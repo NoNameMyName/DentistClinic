@@ -5,6 +5,8 @@ import ffeks.smykov_rv.dentistclinic.security.repository.UserAccountRepository;
 import ffeks.smykov_rv.dentistclinic.security.service.UserAccountService;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserAccountServiceImpl implements UserAccountService {
 
@@ -29,5 +31,10 @@ public class UserAccountServiceImpl implements UserAccountService {
         }
 
         userAccountRepository.save(userAccount);
+    }
+
+    @Override
+    public Optional<UserAccount> getUserByEmail(String email) {
+        return userAccountRepository.findByEmail(email);
     }
 }

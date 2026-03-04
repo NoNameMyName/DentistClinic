@@ -32,7 +32,7 @@ public class UserAccount implements UserDetails {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @ManyToMany()
+    @ManyToMany
     @JoinTable(
             schema = "identity",
             name = "user_accounts_roles",

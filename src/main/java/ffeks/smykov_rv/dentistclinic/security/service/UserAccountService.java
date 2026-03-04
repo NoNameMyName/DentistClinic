@@ -2,6 +2,12 @@ package ffeks.smykov_rv.dentistclinic.security.service;
 
 import ffeks.smykov_rv.dentistclinic.security.model.UserAccount;
 
+import java.util.Optional;
+
 public interface UserAccountService {
     void createUserAccount(UserAccount userAccount);
+
+    Optional<UserAccount> getUserByEmail(String email);
+
+
 }
