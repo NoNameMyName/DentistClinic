@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/accounts")
 public class UserAccountController {
 
-    RegisterUserAccountUseCase registerUserAccountUseCase;
+    private final RegisterUserAccountUseCase registerUserAccountUseCase;
+
+    public UserAccountController(RegisterUserAccountUseCase registerUserAccountUseCase) {
+        this.registerUserAccountUseCase = registerUserAccountUseCase;
+    }
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)

@@ -27,9 +27,6 @@ public class UserAccount implements UserDetails {
     private String lastName;
 
     @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
     private String phoneNumber;
 
     @ManyToMany
@@ -47,7 +44,7 @@ public class UserAccount implements UserDetails {
 
     @Override
     public String getUsername() {
-        return this.firstName;
+        return this.phoneNumber;
     }
 
     @Override

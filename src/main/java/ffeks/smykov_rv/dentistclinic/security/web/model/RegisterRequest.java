@@ -1,6 +1,5 @@
 package ffeks.smykov_rv.dentistclinic.security.web.model;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 public record RegisterRequest(
@@ -9,9 +8,6 @@ public record RegisterRequest(
 
         @NotBlank
         String lastName,
-
-        @Email @NotBlank
-        String email,
 
         @NotBlank
         String password,

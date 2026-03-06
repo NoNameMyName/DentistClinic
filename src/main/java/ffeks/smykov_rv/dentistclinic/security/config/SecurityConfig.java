@@ -27,9 +27,11 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/v1/accounts/register").permitAll()
                         .requestMatchers("/error").permitAll()
-                        .requestMatchers("/api/v1/homepage/basic-auth").authenticated()
-                        .requestMatchers("/api/v1/homepage/user-auth").hasRole("USER")
-                        .requestMatchers("/api/v1/homepage/admin-auth").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/reservation/basic-auth").authenticated()
+                        .requestMatchers("/api/v1/reservation/user-auth").hasRole("USER")
+                        .requestMatchers("/api/v1/reservation/make_reservation").hasRole("USER")
+                        .requestMatchers("/api/v1/reservation/admin-auth").hasRole("ADMIN")
+//                        .requestMatchers("/api/v1/reservation/admin-auth").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()
 
                 ).httpBasic(Customizer.withDefaults());

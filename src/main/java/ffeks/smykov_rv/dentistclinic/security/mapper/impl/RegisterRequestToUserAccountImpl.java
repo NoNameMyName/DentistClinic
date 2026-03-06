@@ -32,7 +32,6 @@ public class RegisterRequestToUserAccountImpl implements RegisterRequestToUserAc
         UserAccount userAccount = new UserAccount();
         userAccount.setFirstName(registerRequest.firstName());
         userAccount.setLastName(registerRequest.lastName());
-        userAccount.setEmail(registerRequest.email());
         userAccount.setPassword(passwordEncoder.encode(registerRequest.password()));
         userAccount.setPhoneNumber(registerRequest.phoneNumber());
         userAccount.setAuthorities(Set.of(userRole));

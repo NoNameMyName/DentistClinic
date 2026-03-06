@@ -10,7 +10,7 @@ public class UserAccountToUserMapperImpl implements UserAccountToUserMapper {
     @Override
     public User map(UserAccount userAccount) {
         return new User(
-                        userAccount.getEmail(),
+                        userAccount.getPhoneNumber(),
                         userAccount.getPassword(),
                         userAccount.getAuthorities());
     }

@@ -10,13 +10,23 @@ create schema identity;
 create table identity.user_accounts
 (
     id          serial primary key,
-    email       varchar(32) unique,
     password    varchar(128) not null ,
     first_name   varchar(50) not null ,
     last_name    varchar(80) not null ,
     phone_number varchar(12) not null
 );
 --rollback drop table identity.user_accounts;
+
+--changeset SmykovRoman:insert-default-values-into-identity-user_accounts-table
+--comment insert default values into identity.user_accounts
+
+INSERT INTO identity.user_accounts (id, password, first_name, last_name, phone_number)
+VALUES (1,  '{bcrypt}$2a$10$SkBejdz2WzUUBQei3ACS9.z8yhjyim0c6jUfRGj4tcWzbHjYxe/7q', 'AAA', 'aaa', '1'),
+       (2,  '{bcrypt}$2a$10$SkBejdz2WzUUBQei3ACS9.z8yhjyim0c6jUfRGj4tcWzbHjYxe/7q', 'DDD', 'ddd', '2'),
+       (3,  '{bcrypt}$2a$10$SkBejdz2WzUUBQei3ACS9.z8yhjyim0c6jUfRGj4tcWzbHjYxe/7q', 'UUU', 'uuu', '3');
+
+--rollback DELETE FROM identity.user_accounts WHERE id IN (1, 2, 3);
+
 
 --changeset SmykovRoman:create-identity-user_roles-table
 --comment create table identity.user_roles
@@ -25,6 +35,14 @@ create table identity.user_roles(
     authority   varchar(32) unique not null
 );
 --rollback drop table identity.user_roles;
+
+--changeset SmykovRoman:insert-default-values-into-identity-user_roles-table
+--comment insert default values into identity.user_roles
+
+INSERT INTO identity.user_roles (id, authority)
+VALUES (1, 'ROLE_USER'), (2, 'ROLE_DOCTOR'), (3, 'ROLE_ADMIN');
+
+--rollback DELETE FROM identity.user_roles WHERE id IN (1, 2, 3);
 
 --changeset SmykovRoman:create-identity-user_accounts_roles-table
 --comment create table identity.user_accounts_roles
@@ -50,3 +68,11 @@ alter table identity.user_accounts_roles
 --rollback alter table identity.user_accounts_roles drop constraint user_accounts_roles__user_roles__fk;
 --rollback alter table identity.user_accounts_roles drop constraint user_accounts_roles__user_accounts__fk;
 --rollback alter table identity.user_accounts_roles drop constraint user_accounts_roles_unique;
+
+--changeset SmykovRoman:insert-default-values-into-identity.user_accounts_roles-table
+--comment insert default values into identity.identity.user_accounts_roles
+
+INSERT INTO identity.user_accounts_roles (user_account_id, user_role_id)
+VALUES (1, 3), (2, 2), (3, 1);
+
+--rollback DELETE FROM identity.user_accounts_roles WHERE user_account_id IN (1, 2, 3);

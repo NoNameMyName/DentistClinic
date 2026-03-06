@@ -7,7 +7,12 @@ import java.util.Optional;
 public interface UserAccountService {
     void createUserAccount(UserAccount userAccount);
 
-    Optional<UserAccount> getUserByEmail(String email);
+//    Optional<UserAccount> getUserByEmail(String email);
 
+    Optional<UserAccount> getUserByPhone(String phoneNumber);
+
+    UserAccount getUserId(Long id);
+
+    boolean isExistById(Long id);
 
 }

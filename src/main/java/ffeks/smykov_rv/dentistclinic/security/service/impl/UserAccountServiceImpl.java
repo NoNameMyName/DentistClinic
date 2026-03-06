@@ -20,21 +20,35 @@ public class UserAccountServiceImpl implements UserAccountService {
     public void createUserAccount(UserAccount userAccount) {
 
         boolean isExistsByPhoneNumber = userAccountRepository.existsByPhoneNumber(userAccount.getPhoneNumber());
-        boolean isExistsByEmail = userAccountRepository.existsByEmail(userAccount.getEmail());
-
         if (isExistsByPhoneNumber) {
             throw new RuntimeException("Account with this phone number already exists");
-        }
-
-        if (isExistsByEmail) {
-            throw new RuntimeException("Account with this email number already exists");
         }
 
         userAccountRepository.save(userAccount);
     }
 
+//    @Override
+//    public Optional<UserAccount> getUserByEmail(String email) {
+//        return userAccountRepository.findByEmail(email);
+//    }
+
     @Override
-    public Optional<UserAccount> getUserByEmail(String email) {
-        return userAccountRepository.findByEmail(email);
+    public Optional<UserAccount> getUserByPhone(String phoneNumber) {
+        return userAccountRepository.findByPhoneNumber(phoneNumber);
+    }
+
+    @Override
+    public UserAccount getUserId(Long id) {
+        if (userAccountRepository.existsById(id)) {
+            return userAccountRepository.findById(id).get();
+        }
+        else  {
+            throw new RuntimeException("Account with this phone id does not exist");
+        }
+    }
+
+    @Override
+    public boolean isExistById(Long id) {
+        return userAccountRepository.findById(id).isPresent();
     }
 }
