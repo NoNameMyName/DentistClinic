@@ -31,12 +31,6 @@ public class ReservationRequestToReservation implements Mapper<Reservation, Rese
     @Override
     public Reservation map(ReservationRequest reservationRequest) {
 
-        log.info("map ReservationRequest to Reservation");
-        log.info("info: {}", reservationRequest);
-
-        LocalTime lt = reservationRequest.endTime();
-        log.info("lt: {}", lt);
-
         boolean res = reservationService.isPresentReservationByReservationDateAndTime(
                 reservationRequest.reservationDate(),
                 reservationRequest.startTime(),
@@ -62,11 +56,10 @@ public class ReservationRequestToReservation implements Mapper<Reservation, Rese
         reservation.setEndTime(reservationRequest.endTime());
         reservation.setReservationDescription(reservationRequest.reservationDescription());
 
-        reservation.setUserAccount(userAccountService.getUserId(reservationRequest.userAccount()));
+        reservation.setUserAccount(userAccountService.getUserById(reservationRequest.userAccount()));
         reservation.setDoctor(doctorService.findDoctorById(reservationRequest.doctorId()));
         reservation.setAdministrator(adminService.findAdministratorById(reservationRequest.administratorId()));
 
-        log.info("reservation: {}", reservation);
         return reservation;
     }
 }

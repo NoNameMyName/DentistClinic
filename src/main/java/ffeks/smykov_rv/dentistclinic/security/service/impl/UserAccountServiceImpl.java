@@ -38,7 +38,7 @@ public class UserAccountServiceImpl implements UserAccountService {
     }
 
     @Override
-    public UserAccount getUserId(Long id) {
+    public UserAccount getUserById(Long id) {
         if (userAccountRepository.existsById(id)) {
             return userAccountRepository.findById(id).get();
         }

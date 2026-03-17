@@ -11,7 +11,7 @@ public interface UserAccountService {
 
     Optional<UserAccount> getUserByPhone(String phoneNumber);
 
-    UserAccount getUserId(Long id);
+    UserAccount getUserById(Long id);
 
     boolean isExistById(Long id);
 
