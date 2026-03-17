@@ -9,11 +9,9 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class DoctorDto {
-
+public class AdministratorDto {
     Long id;
-    String speciality;
-    String experience;
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     UserAccount userAccount;
     UserAccountDto userAccountDto;

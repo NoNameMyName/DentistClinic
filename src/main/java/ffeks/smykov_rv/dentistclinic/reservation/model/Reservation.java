@@ -45,4 +45,7 @@ public class Reservation {
 
     @Column(name = "is_accepted",  nullable = false)
     private boolean isAccepted;
+
+    @Column(name = "is_canceled",  nullable = false)
+    private boolean isCanceled = false;
 }

@@ -1,16 +1,14 @@
 package ffeks.smykov_rv.dentistclinic.reservation.dto;
 
-import ffeks.smykov_rv.dentistclinic.reservation.dto.mapping.DoctorDto;
-import ffeks.smykov_rv.dentistclinic.reservation.model.Doctor;
+import ffeks.smykov_rv.dentistclinic.reservation.dto.mapping.AdministratorDto;
+import ffeks.smykov_rv.dentistclinic.reservation.model.Administrator;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring", uses = {UserAccountMapper.class})
-public interface DoctorMapping {
+public interface AdministratorMapping {
     @Mapping(target = "userAccountDto", source = "userAccount") // Maps userAccount -> userAccountDto using the nested mapper
     @Mapping(target = "userAccount", ignore = true) // Prevents copying the full sensitive UserAccount
-    DoctorDto toDoctorDto(Doctor doctor);
-    Doctor toEntity(DoctorDto doctorDto);
-
+    AdministratorDto toAdministratorDto(Administrator administrator);
+    Administrator toEntity(AdministratorDto administratorDto);
 }

@@ -72,7 +72,8 @@ create table reservations.reservation (
   doctor_id integer not null,
   administrator_id integer,
   user_account_id integer not null,
-  is_accepted boolean not null
+  is_accepted boolean not null,
+  is_canceled boolean not null default false
 );
 --rollback drop table reservations.reservation;
 

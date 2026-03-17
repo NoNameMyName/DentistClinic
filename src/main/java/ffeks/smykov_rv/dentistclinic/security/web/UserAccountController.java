@@ -27,4 +27,10 @@ public class UserAccountController {
         registerUserAccountUseCase.registerUserAccount(registerRequest);
 
     }
+
+    @GetMapping("/home")
+    @ResponseStatus(HttpStatus.OK)
+    public void home() {
+
+    }
 }
