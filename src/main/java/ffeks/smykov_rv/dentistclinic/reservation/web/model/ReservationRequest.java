@@ -2,6 +2,8 @@ package ffeks.smykov_rv.dentistclinic.reservation.web.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import ffeks.smykov_rv.dentistclinic.reservation.model.Doctor;
+import ffeks.smykov_rv.dentistclinic.reservation.model.Location;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,9 +31,10 @@ public record ReservationRequest(
         LocalTime endTime,
 
         @NotNull
-        Long doctorId,
+        Long locationId,
 
-        Long administratorId,
+        @NotNull
+        Long doctorId,
 
         @NotNull
         Long userAccount

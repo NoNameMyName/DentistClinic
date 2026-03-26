@@ -12,13 +12,13 @@ import java.time.LocalTime;
 @Setter
 public class ReservationDto {
 
-    int id;
+    long id;
     String reservationDescription;
     LocalDate reservationDate;
     LocalTime startTime;
     LocalTime endTime;
+    LocationDto location;
     DoctorDto doctor;
-    AdministratorDto administrator;
     UserAccountDto userAccountDto;
     boolean isAccepted;
     boolean isCancelled;

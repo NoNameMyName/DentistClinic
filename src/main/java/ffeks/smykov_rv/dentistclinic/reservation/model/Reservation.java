@@ -17,7 +17,7 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "reservation_description",  nullable = false)
     private String reservationDescription;
@@ -32,12 +32,12 @@ public class Reservation {
     private LocalTime endTime;
 
     @ManyToOne()
-    @JoinColumn(name = "doctor_id",  nullable = false)
-    private Doctor doctor;
+    @JoinColumn(name = "location_id",  nullable = false)
+    private Location location;
 
     @ManyToOne()
-    @JoinColumn(name = "administrator_id")
-    private Administrator administrator;
+    @JoinColumn(name = "doctor_id",  nullable = false)
+    private Doctor doctor;
 
     @ManyToOne()
     @JoinColumn(name = "user_account_id",  nullable = false)

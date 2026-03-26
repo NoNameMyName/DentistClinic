@@ -82,7 +82,8 @@ class UserAccountServiceImplUnitTest {
 
     @Test
     void shouldNotCallSave_whenPhoneExists() {
-        when(userAccountRepository.existsByPhoneNumber(userAccount.getPhoneNumber())).thenReturn(true);
+        when(userAccountRepository.existsByPhoneNumber(userAccount.getPhoneNumber()))
+                .thenReturn(true);
 
         assertThrows(RuntimeException.class,
                 () -> userAccountServiceImpl.createUserAccount(userAccount));

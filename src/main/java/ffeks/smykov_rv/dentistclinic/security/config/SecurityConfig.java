@@ -60,6 +60,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/api/v1/reservation/make_reservation").hasRole("USER")
                         .requestMatchers("/api/v1/reservation/make_reservation").permitAll()
                         .requestMatchers("/api/v1/reservation/all_reservations").permitAll()
+                        .requestMatchers("/api/v1/reservation/get_all_locations").permitAll()
                         .requestMatchers("/api/v1/reservation/admin-auth").hasRole("ADMIN")
 //                        .requestMatchers("/api/v1/reservation/admin-auth").hasAnyRole("ADMIN", "USER")
                         .anyRequest().authenticated()

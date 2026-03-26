@@ -32,8 +32,24 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public boolean isPresentReservationByReservationDateAndTime(LocalDate date, LocalTime start, LocalTime end) {
-        Optional<Reservation> res = reservationRepository.findReservationByDateStartAndEndTime(date, start, end);
+    public boolean isPresentReservationByReservationDateTimeDoctorAndLocation(
+            LocalDate date,
+            LocalTime start,
+            LocalTime end,
+            Long doctorId,
+            Long locationId,
+            boolean status
+    ) {
+        Optional<Reservation> res = reservationRepository.findReservationByReservationDateTimeDoctorAndLocation(
+                date, start, end, doctorId, locationId, status
+        );
         return res.isPresent();
     }
+
+
+//    @Override
+//    public boolean isPresentReservationByReservationDateAndTime(LocalDate date, LocalTime start, LocalTime end) {
+//        Optional<Reservation> res = reservationRepository.findReservationByDateStartAndEndTime(date, start, end);
+//        return res.isPresent();
+//    }
 }

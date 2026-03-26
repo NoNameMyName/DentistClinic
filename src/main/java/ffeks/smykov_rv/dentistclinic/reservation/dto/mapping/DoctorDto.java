@@ -2,11 +2,11 @@ package ffeks.smykov_rv.dentistclinic.reservation.dto.mapping;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ffeks.smykov_rv.dentistclinic.security.model.UserAccount;
-import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+@NoArgsConstructor
 @Getter
 @Setter
 public class DoctorDto {

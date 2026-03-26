@@ -1,13 +1,18 @@
 package ffeks.smykov_rv.dentistclinic.reservation.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ffeks.smykov_rv.dentistclinic.security.model.UserAccount;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 
-@Data
-@AllArgsConstructor
+
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(schema = "reservations", name = "doctor")
 public class Doctor {
@@ -25,4 +30,10 @@ public class Doctor {
 
     @Column(name = "experience", nullable = false)
     private int experience;
+
+    @ManyToOne()
+    @JoinColumn(name = "location_id")
+    @JsonIgnore
+    private Location location;
+
 }
