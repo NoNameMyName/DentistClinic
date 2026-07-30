@@ -5,6 +5,7 @@ import ffeks.smykov_rv.dentistclinic.reservation.dto.mapping.UserAccountDto;
 import ffeks.smykov_rv.dentistclinic.security.model.UserAccount;
 import ffeks.smykov_rv.dentistclinic.security.service.UserAccountService;
 import ffeks.smykov_rv.dentistclinic.security.usecase.GetUserAccountInfoUseCase;
+import ffeks.smykov_rv.dentistclinic.security.web.model.UserAccountInfoRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -28,6 +29,27 @@ public class GetUserAccountInfoFacade implements GetUserAccountInfoUseCase {
         }
         else {
             throw new RuntimeException("UserAccount not found");
+        }
+    }
+
+    @Override
+    public UserAccountDto getUserAccountInfo(UserAccountInfoRequest request) {
+        if (request.phoneNumber() != null) {
+            Optional<UserAccount> userAccount = userAccountService.getUserByPhone(request.phoneNumber());
+            if (userAccount.isPresent()) {
+                return userAccountMapper.toUserAccountDto(userAccount.get());
+            }
+            else {
+                throw new RuntimeException("UserAccount not found");
+            }
+        } else {
+            Optional<UserAccount> userAccount = userAccountService.getUserAccountByFirstNameAndLastName(request.firstName(), request.lastName());
+            if (userAccount.isPresent()) {
+                return userAccountMapper.toUserAccountDto(userAccount.get());
+            }
+            else {
+                throw new RuntimeException("UserAccount not found");
+            }
         }
     }
 }

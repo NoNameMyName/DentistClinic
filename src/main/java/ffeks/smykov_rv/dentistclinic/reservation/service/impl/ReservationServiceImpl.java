@@ -47,30 +47,6 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findAll();
     }
 
-//    @Override
-//    public void addReservation(Reservation reservation) {
-//        reservationRepository.save(reservation);
-//    }
-//
-//    @Override
-//    public boolean isPresentReservationByReservationDateTimeDoctorAndLocation(
-//            LocalDate date,
-//            Long locationId,
-//            Long doctorId,
-//            LocalTime start,
-//            LocalTime end)
-//    {
-//        Optional<Reservation> res = reservationRepository.findReservationByReservationDateTimeDoctorAndLocation(
-//                date, locationId, doctorId, start, end
-//        );
-//        return res.isPresent();
-//    }
-//
-//    @Override
-//    public void cancelReservation(long reservationId) {
-//        reservationRepository.cancelReservationByAdmin(reservationId);
-//    }
-
     @Override
     public Optional<Reservation> getReservationByReservationId(long id) {
         return reservationRepository.getReservationsById(id);
@@ -140,7 +116,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public ReservationDto makeReservation(MakeReservationRequest request) {
+    public ReservationDto makeReservationWithoutUser(MakeReservationRequest request) {
         tryBook(request);
 
         try {

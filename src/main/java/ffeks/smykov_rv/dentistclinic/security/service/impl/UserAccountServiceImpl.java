@@ -72,4 +72,9 @@ public class UserAccountServiceImpl implements UserAccountService {
         return userAccountRepository.findByPhoneNumber(currentUsername);
 
     }
+
+    @Override
+    public Optional<UserAccount> getUserAccountByFirstNameAndLastName(String firstName, String lastName) {
+        return userAccountRepository.findByFirstNameAndLastName(firstName, lastName);
+    }
 }

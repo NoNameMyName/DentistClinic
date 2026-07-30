@@ -49,6 +49,9 @@ public class GetAllReservationsFacade implements GetAllReservationsUseCase {
         Administrator administrator = adminService.findAdministratorByPhoneNumber(
                 Objects.requireNonNull(
                         SecurityContextHolder.getContext().getAuthentication()).getName());
+        if (administrator == null){
+            throw new RuntimeException("Administrator Not Found");
+        }
 
         List<ReservationDto> dtos = reservationService
                 .getReservationsByLocationId(administrator.getLocation().getId())

@@ -2,6 +2,7 @@ package ffeks.smykov_rv.dentistclinic.reservation.usecase.impl;
 
 import ffeks.smykov_rv.dentistclinic.reservation.service.ReservationService;
 import ffeks.smykov_rv.dentistclinic.reservation.usecase.MakeReservationUseCase;
+import ffeks.smykov_rv.dentistclinic.reservation.web.model.MakeReservationByAdminRequest;
 import ffeks.smykov_rv.dentistclinic.reservation.web.model.MakeReservationRequest;
 import ffeks.smykov_rv.dentistclinic.security.service.UserAccountService;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,7 +26,17 @@ public class MakeReservationFacade implements MakeReservationUseCase {
     }
 
     @Override
-    public void makeReservationByAdministrator(MakeReservationRequest makeReservationRequest) {
-        reservationService.makeReservation(makeReservationRequest);
+    public void makeReservationByAdministrator(MakeReservationByAdminRequest request) {
+        MakeReservationRequest reservationRequest = new MakeReservationRequest(
+                request.doctorId(),
+                request.date(),
+                request.startTime(),
+                request.serviceDurationMinutes(),
+                request.description()
+        );
+        if (request.userId() != null) {
+            reservationService.makeReservation(reservationRequest, request.userId());
+        }
+        else reservationService.makeReservationWithoutUser(reservationRequest);
     }
 }

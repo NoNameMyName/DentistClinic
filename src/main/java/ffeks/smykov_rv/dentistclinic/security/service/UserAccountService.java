@@ -19,4 +19,6 @@ public interface UserAccountService {
 
     Optional<UserAccount> getUserAccountDtoByToken();
 
+    Optional<UserAccount> getUserAccountByFirstNameAndLastName(String firstName, String lastName);
+
 }

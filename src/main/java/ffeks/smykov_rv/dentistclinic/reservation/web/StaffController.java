@@ -5,7 +5,7 @@ import ffeks.smykov_rv.dentistclinic.reservation.usecase.AcceptReservationUseCas
 import ffeks.smykov_rv.dentistclinic.reservation.usecase.CancelReservationUseCase;
 import ffeks.smykov_rv.dentistclinic.reservation.usecase.GetAllReservationsUseCase;
 import ffeks.smykov_rv.dentistclinic.reservation.usecase.MakeReservationUseCase;
-import ffeks.smykov_rv.dentistclinic.reservation.web.model.MakeReservationRequest;
+import ffeks.smykov_rv.dentistclinic.reservation.web.model.MakeReservationByAdminRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,7 +54,7 @@ public class StaffController {
 
     @PostMapping("/make_reservation")
     @ResponseStatus(HttpStatus.CREATED)
-    public void makeReservationByAdministrator(@RequestBody MakeReservationRequest makeReservationRequest) {
-        makeReservationUseCase.makeReservationByAdministrator(makeReservationRequest);
+    public void makeReservationByAdministrator(@RequestBody MakeReservationByAdminRequest request) {
+        makeReservationUseCase.makeReservationByAdministrator(request);
     }
 }

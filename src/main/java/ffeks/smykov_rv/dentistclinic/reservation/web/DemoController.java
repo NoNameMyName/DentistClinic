@@ -71,26 +71,6 @@ public class DemoController {
         return reservationService.getAvailableSlots(doctorId, date);
     }
 
-
-
-
-
-
-
-
-//    @GetMapping("/get_all_locations")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<LocationDto> getAllLocations() {
-//        return getAllLocationsUseCase.getAllLocations();
-//
-////        return locationsService.getAllLocations();
-//    }
-
-//    @GetMapping("/all_reservations")
-//    public List<ReservationDto> allReservations() {
-//        return getAllReservationsUseCase.getAllReservations();
-//    }
-
     @GetMapping("/basic-auth")
     public String basicAuth() {
         return "Basic Auth";
@@ -110,6 +90,5 @@ public class DemoController {
     public String superAdminAuth() {
         return "Super admin Auth";
     }
-
 
 }

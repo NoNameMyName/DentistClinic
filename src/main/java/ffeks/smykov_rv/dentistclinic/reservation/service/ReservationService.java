@@ -3,6 +3,7 @@ package ffeks.smykov_rv.dentistclinic.reservation.service;
 import ffeks.smykov_rv.dentistclinic.reservation.dto.mapping.ReservationDto;
 import ffeks.smykov_rv.dentistclinic.reservation.dto.mapping.TimeSlotDto;
 import ffeks.smykov_rv.dentistclinic.reservation.model.Reservation;
+import ffeks.smykov_rv.dentistclinic.reservation.web.model.MakeReservationByAdminRequest;
 import ffeks.smykov_rv.dentistclinic.reservation.web.model.MakeReservationRequest;
 
 import java.time.LocalDate;
@@ -32,7 +33,7 @@ public interface ReservationService {
 
     List<TimeSlotDto> getAvailableSlots(Long doctorId, LocalDate date);
     ReservationDto makeReservation(MakeReservationRequest request, Long userId);
-    ReservationDto makeReservation(MakeReservationRequest request);
+    ReservationDto makeReservationWithoutUser(MakeReservationRequest request);
     void cancelReservation(Long reservationId, Long userId);
     void cancelReservationByAdministrator(Long reservationId);
 }

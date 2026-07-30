@@ -5,6 +5,7 @@ import ffeks.smykov_rv.dentistclinic.security.service.UserAccountService;
 import ffeks.smykov_rv.dentistclinic.security.usecase.GetUserAccountInfoUseCase;
 import ffeks.smykov_rv.dentistclinic.security.usecase.RegisterUserAccountUseCase;
 import ffeks.smykov_rv.dentistclinic.security.web.model.RegisterRequest;
+import ffeks.smykov_rv.dentistclinic.security.web.model.UserAccountInfoRequest;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -33,5 +34,11 @@ public class UserAccountController {
     @ResponseStatus(HttpStatus.OK)
     public UserAccountDto getUserInfo() {
         return getUserAccountInfoUseCase.getUserAccountInfo();
+    }
+
+    @PostMapping("/get_user_account_info")
+    @ResponseStatus(HttpStatus.OK)
+    public UserAccountDto getUserAccountInfo(@Valid @RequestBody UserAccountInfoRequest request) {
+        return getUserAccountInfoUseCase.getUserAccountInfo(request);
     }
 }
